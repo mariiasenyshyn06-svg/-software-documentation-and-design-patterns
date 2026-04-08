@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Payments</h2>
+<button class="add-btn" onclick="openModal('addPaymentModal')">+ Add Payment</button>
+
+<table>
+<tr>
+    <th>Booking</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th>Actions</th>
+</tr>
+
+{% for p in payments %}
+<tr>
+    <td>{{ p.booking_id }}</td>
+    <td>{{ p.amount }} UAH</td>
+    <td>{{ p.status }}</td>
+<td>
+    <button class="edit-btn" onclick="openModal('editPaymentModal{{ p.payment_id }}')">Edit</button>
+    <a href="/delete_payment/{{ p.payment_id }}" onclick="return confirmDelete()">
+        <button class="delete-btn">Delete</button>
+    </a>
+</td>
+</tr>
+
+<div id="editPaymentModal{{ p.payment_id }}" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('editPaymentModal{{ p.payment_id }}')">&times;</span>
+        <h3>Edit Payment</h3>
+        <form method="POST" action="/edit_payment/{{ p.payment_id }}">
+            <input name="booking_id" value="{{ p.booking_id }}" placeholder="Booking ID">
+            <input name="amount" value="{{ p.amount }}" placeholder="Amount">
+            <input name="status" value="{{ p.status }}" placeholder="Status">
+            <button type="submit" class="edit-btn">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endfor %}
+</table>
+
+<div id="addPaymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('addPaymentModal')">&times;</span>
+        <h3>Add Payment</h3>
+        <form method="POST" action="/add_payment">
+            <input name="booking_id" placeholder="Booking ID">
+            <input name="amount" placeholder="Amount">
+            <input name="status" placeholder="Status">
+            <button type="submit" class="add-btn">Add</button>
+        </form>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

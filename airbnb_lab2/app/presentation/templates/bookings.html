@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Bookings</h2>
+<button class="add-btn" onclick="openModal('addBookingModal')">+ Add Booking</button>
+
+<table>
+<tr>
+    <th>User</th>
+    <th>Housing</th>
+    <th>Status</th>
+    <th>Actions</th>
+</tr>
+
+{% for b in bookings %}
+<tr>
+    <td>{{ b.user_id }}</td>
+    <td>{{ b.housing_id }}</td>
+    <td>{{ b.status }}</td>
+<td>
+    <button class="edit-btn" onclick="openModal('editBookingModal{{ b.booking_id }}')">Edit</button>
+    <a href="/delete_booking/{{ b.booking_id }}" onclick="return confirmDelete()">
+        <button class="delete-btn">Delete</button>
+    </a>
+</td>
+</tr>
+
+<div id="editBookingModal{{ b.booking_id }}" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('editBookingModal{{ b.booking_id }}')">&times;</span>
+        <h3>Edit Booking</h3>
+        <form method="POST" action="/edit_booking/{{ b.booking_id }}">
+            <input name="user_id" value="{{ b.user_id }}" placeholder="User ID">
+            <input name="housing_id" value="{{ b.housing_id }}" placeholder="Housing ID">
+            <input name="status" value="{{ b.status }}" placeholder="Status">
+            <button type="submit" class="edit-btn">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endfor %}
+</table>
+
+<div id="addBookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('addBookingModal')">&times;</span>
+        <h3>Add Booking</h3>
+        <form method="POST" action="/add_booking">
+            <input name="user_id" placeholder="User ID">
+            <input name="housing_id" placeholder="Housing ID">
+            <input name="status" placeholder="Status">
+            <button type="submit" class="add-btn">Add</button>
+        </form>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,196 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    color: #484848;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+
+h2 {
+    text-align: center;
+    font-weight: 600;
+    color: #FF5A5F;
+    margin-bottom: 20px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #FF5A5F;
+    color: white;
+    font-weight: 500;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+button {
+    padding: 8px 16px;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button.add-btn {
+    background-color: #FF5A5F;
+    color: #fff;
+}
+
+button.edit-btn {
+    background-color: #00A699;
+    color: #fff;
+}
+
+button.delete-btn {
+    background-color: #FFB400;
+    color: #fff;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.close {
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #FF5A5F;
+}
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 15px 50px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 24px;
+    color: #FF5A5F;
+    text-decoration: none;
+}
+
+.navbar-right .nav-link {
+    margin-left: 25px;
+    font-weight: 500;
+    color: #484848;
+    text-decoration: none;
+}
+
+.navbar-right .nav-link:hover {
+    color: #FF5A5F;
+}
+
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.home-container h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 64px;
+    color: #FF5A5F; /* AirBnB червоний */
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.home-buttons .btn {
+    display: inline-block;
+    padding: 16px 28px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF5A5F;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.home-buttons .btn:hover {
+    background-color: #FF7B82;
+    transform: scale(1.05);
+}
+.home-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
