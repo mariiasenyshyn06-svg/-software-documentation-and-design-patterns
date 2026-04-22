@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airbnb MVC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="/" class="logo">AirBnB</a>
+        </div>
+        <div class="navbar-right">
+            <a href="/users" class="nav-link">Users</a>
+            <a href="/housing" class="nav-link">Housing</a>
+            <a href="/bookings" class="nav-link">Bookings</a>
+            <a href="/payments" class="nav-link">Payments</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

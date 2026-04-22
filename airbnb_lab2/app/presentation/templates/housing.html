@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Housing</h2>
+<button class="add-btn" onclick="openModal('addHousingModal')"> + Add Housing</button>
+
+<table>
+<tr><th>Address</th><th>Price</th><th>Rooms</th><th> + Actions</th></tr>
+{% for h in housing %}
+<tr>
+<td>{{ h.address }}</td>
+<td>{{ h.price }} UAH</td>
+<td>{{ h.rooms }}</td>
+<td>
+    <button class="edit-btn" onclick="openModal('editHousingModal{{ h.housing_id }}')">Edit</button>
+    <a href="/delete_housing/{{ h.housing_id }}" onclick="return confirmDelete()">
+        <button class="delete-btn">Delete</button>
+    </a>
+</td>
+
+<div id="editHousingModal{{ h.housing_id }}" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('editHousingModal{{ h.housing_id }}')">&times;</span>
+<h3>Edit Housing</h3>
+<form method="POST" action="/edit_housing/{{ h.housing_id }}">
+<input name="address" value="{{ h.address }}" placeholder="Address">
+<input name="price" value="{{ h.price }}" placeholder="Price">
+<input name="rooms" value="{{ h.rooms }}" placeholder="Rooms">
+<button type="submit" class="edit-btn">Save</button>
+</form>
+</div>
+</div>
+{% endfor %}
+</table>
+
+<div id="addHousingModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('addHousingModal')">&times;</span>
+<h3>Add Housing</h3>
+<form method="POST" action="/add_housing">
+<input name="address" placeholder="Address">
+<input name="price" placeholder="Price">
+<input name="rooms" placeholder="Rooms">
+<button type="submit" class="add-btn">Add</button>
+</form>
+</div>
+</div>
+{% endblock %}
